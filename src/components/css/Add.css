@@ -1,0 +1,46 @@
+/* styles.css */
+
+.container {
+
+  }
+  
+  .sp1 {
+    /* Add your specific styles for sp1 class */
+  }
+  
+  .form-label {
+    font-weight: bold;
+    color:'RGB(104 81 155)'
+  }
+  
+  .outer_c1{
+
+    width: '60%';
+    margin-left: '20%';
+    background-color: 'red';
+    border:'1px solid rgb(67,35,130)';
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .btn-primary1 {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .btn-primary1:hover {
+    background-color: #0056b3;
+  }
+  

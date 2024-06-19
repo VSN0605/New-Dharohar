@@ -1,0 +1,19 @@
+.scrollable-table {
+    max-height: 600px; /* Adjust this height based on your requirements */
+    overflow-y: auto;
+    border: 1px solid #e0e0e0; /* Optional: Adds a border around the scrollable area */
+}
+
+/* Fix the table header */
+.scrollable-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: rgb(247, 245, 251); /* Important: This ensures the header is not transparent */
+    z-index: 1; /* Optional: This ensures the header stays on top of the other rows */
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); /* Optional: Adds a subtle shadow to the sticky header */
+   
+}
+
+.c1{
+    
+}

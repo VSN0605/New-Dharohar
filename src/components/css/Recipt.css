@@ -1,0 +1,44 @@
+.receipt_div{
+    width:800px;
+    margin:0 auto;
+}
+.b_line{
+    height: 5px;
+    background-color: black;
+    width: 100%;
+}
+.b_line2{
+    height: 7px;
+    background-color: black;
+    width: 100%;
+}
+.r_line{
+    height: 10px;
+    background-color: rgb(166, 2, 2);
+    width: 100%;
+}
+.invoice_name
+{
+    font-family: "Times New Roman", Times, serif;
+}
+.i_table{
+    width: 80%;
+    border: 1px solid ;
+}
+ th, td{
+    border: 1px solid rgb(209, 209, 209);
+    height: 40px;
+    padding-left: 20px;
+}
+.r_col
+{
+    padding-left: 20px;
+}
+.l_col{
+    width: 70%;
+}
+.i_img{
+    width: 200px;
+    border:rgb(166, 2, 2) solid 2px;
+    border-radius: 10px;
+}   

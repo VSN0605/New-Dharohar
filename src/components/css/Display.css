@@ -1,0 +1,32 @@
+/* .hf-hide{
+    display: none;
+} */
+.mainDiv{
+  /*   width: 90%;
+    margin-left:5%; 
+    margin-top: 50px; */
+    padding: 2px;
+    border: solid 8px rgb(67,35,130);
+    box-shadow: 5px 5px 30px 5px rgba(0, 0, 0, 0.5); /* Adjust as needed */
+   
+}
+
+.submainDiv{
+    border: solid 4px rgb(67,35,130);
+    padding: 10px;
+}
+
+.data{
+
+}
+
+.didiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 50px;
+}
+
+.image{
+
+}
