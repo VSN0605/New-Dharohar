@@ -221,18 +221,23 @@ export default function GenerateInvoice({cart,setCart,dbpath,vsb}) {
   // }
 
   // Handle Delete Function
-const handleDelete = (productId, event) => {
+// const handleDelete = (productId, event, index) => {
   
+//   event.preventDefault();
+
+//   const updatedCart = cart.filter((item, i) => item.id !== productId && i !== index);
+//   setCart(updatedCart);
+//   calculateTotalAmount(updatedCart);
+// }
+
+const handleDelete = (event, index) => {
   event.preventDefault();
 
-  const updatedCart = cart.filter(item => item.id !== productId);
+  // Use the index to delete the specific item
+  const updatedCart = cart.filter((item, i) => i !== index);
   setCart(updatedCart);
-
   calculateTotalAmount(updatedCart);
-
-}
-
-  
+};  
   
 const priceFormat = (price) => {
   price = parseFloat(price).toFixed(2).toString();
@@ -333,11 +338,20 @@ const priceFormat = (price) => {
     localStorage.setItem("InvoiceQrid", e.target.value);
   }
 
-  const submit = () => {
-let finalData = {product:cart, total:tamount, gst:gst, discount:damount, fprice:fprice, Cname: name, contactNo: cno, gstNo: email, address: address, invoiceId: invoiceId, invoiceNo: invoiceNo}
+  const submit = async() => {
+    // try{
+    //   const result = await axios.get(dbpath+"getPInvoice.php?id="+invoiceNo);
+    //   console.log("result For invoice", result.data?.phpresult);
 
-localStorage.setItem("invoiceData", JSON.stringify(finalData))
-console.log("finalll", finalData)
+    //   if(result.data.phpresult.length){
+    //     alert('This Invoice Number Is Already Exists, Try Another One!');
+    //     return
+    //   }
+
+      let finalData = {product:cart, total:tamount, gst:gst, discount:damount, fprice:fprice, Cname: name, contactNo: cno, gstNo: email, address: address, invoiceId: invoiceId, invoiceNo: invoiceNo}
+
+    localStorage.setItem("invoiceData", JSON.stringify(finalData))
+    console.log("finalll", finalData)
 
 
     if (name.length === 0) {
@@ -425,7 +439,10 @@ console.log("finalll", finalData)
       handleClick();
     }, 2000);
 
-    }
+     }
+    // } catch(error){
+    //   console.log("Error While Fetching the Data --> ", error)
+    // }
   } 
 console.log("ib=nvo", invoiceData)
   console.log("mukesh", cart)
@@ -518,7 +535,7 @@ console.log("ib=nvo", invoiceData)
                 <td><span id={'rate'+index}>{priceFormat(item.price * item.quantity)}</span></td>
                 <td><button
   style={{ backgroundColor: 'red', borderRadius: '10px', border: '0px solid', width: '80px', color: 'white', fontWeight: 'bold', height: '35px' }}
-  onClick={(event) => handleDelete(item.id, event)}
+  onClick={(event) => handleDelete(event, index)}
 >
   DELETE
 </button>

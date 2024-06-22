@@ -24,7 +24,7 @@ export default function Dashboard({
     const result = await axios.get(dbpath + "displayall.php");
   
     setArtifact(result.data.phpresult);
-    console.log(result.data.phpresult);
+    console.log("dashboard data",result.data.phpresult);
   };
 
   // calculating total amount of quantity and price
@@ -134,6 +134,17 @@ export default function Dashboard({
     navigate("/qr")
   }
 
+
+  const GetAllInvoice = () => {
+    navigate("/AllInvoice")
+    
+    
+  }
+
+  const GetAllQuotation = () => {
+    navigate("/AllQuotation")
+  }
+
   return (
     <>
       <div style={{ backgroundColor: "#f1ebff", color: "black", }}>
@@ -240,7 +251,15 @@ export default function Dashboard({
                 required
               ></input>
             </div>
-            <div style={{ display: "flex", marginLeft: "40%", gap: "20px" }}>
+            <div style={{ display: "flex", marginLeft: "32%", gap: "20px" }}>
+              <button
+                  type="submit"
+                  class="btn btn-primary"
+                  onClick={GetAllQuotation}
+                  style={{ backgroundColor: "rgb(67,35,130)", height: "37px", marginTop: "9px" }}
+                >
+                  All Quotation
+              </button>
               <Link
                 className="nav-link"
                 style={{ width: "8%" }}
@@ -250,7 +269,7 @@ export default function Dashboard({
                 <button
                   type="submit"
                   class="btn btn-primary"
-                  style={{ backgroundColor: "rgb(67,35,130)", height: "38px", marginTop: "0px" }}
+                  style={{ backgroundColor: "rgb(67,35,130)", height: "37px", marginTop: "0px" }}
            onClick={handleNavigate}
                 >
                   Get QR
@@ -281,6 +300,14 @@ export default function Dashboard({
                   Delete
                 </button>
               </Link>
+              <button
+                  type="submit"
+                  class="btn btn-primary"
+                  onClick={GetAllInvoice}
+                  style={{ backgroundColor: "rgb(67,35,130)", height: "37px", marginTop: "7px" }}
+                >
+                  All Invoice
+              </button>
             </div>
           </form>
         </center>
@@ -290,7 +317,7 @@ export default function Dashboard({
 
           <br></br>
           <center>
-            <h5> All Artifacts </h5>
+            <h2 style={{fontWeight: "bold"}}> ALL ARTIFACTS </h2>
 
             <br></br>
             <div></div>
@@ -302,6 +329,7 @@ export default function Dashboard({
                 <thead>
                   <tr className="c1">
                     <th scope="col">Sr No.</th>
+                    <th scope="col">ID</th>
                     {/* <th scope="col">Artifact ID</th> */}
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
@@ -322,6 +350,7 @@ export default function Dashboard({
                     artifact?.map((res, index) => (
                       <tr>
                         <td>{index+1}</td>
+                        <td>{res.id}</td>
                         {/* <td>{res.artid}</td> */}
                         <td>{res.name}</td>
                         <td style={{ width: "250px" }}>{res.description}</td>

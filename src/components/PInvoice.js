@@ -70,7 +70,7 @@ export default function PInvoice({dbpath,vsb}) {
     document.getElementById("timestamp").innerHTML = result.data.phpresult[0]['timestamp']; 
     } catch(error){
       console.log("Eroor Occured While Fetching the data ", error)
-      document.getElementById("Error-msg").innerHTML = "Error Fetching Data, Check the Quotation Number !!";
+      document.getElementById("Error-msg").innerHTML = "Error Fetching Data, Check the Invoice Number !!";
     }
 }
 

@@ -93,7 +93,7 @@ function printDiv() {
         <div style={{backgroundImage: `url(${img1})`,  backgroundSize: 'cover', width:'100%', height:'170px'}}>
           <div style={{marginLeft: '6%'}}>
             <br></br>
-            <b>GST. </b>: 27ARGPC6266P1Z9 <span style={{marginLeft: '320px'}}><b>dharoharvintagestore@gmail.com</b></span><br></br>
+            <b>GST. : 27ARGPC6266P1Z9</b> <span style={{marginLeft: '320px'}}><b>dharoharvintagestore@gmail.com</b></span><br></br>
             {/* <b>GST. </b>: 27ARGPC6266P1Z9 */}
             <span ><b>Mob.No : 9359521614</b></span>
           </div>

@@ -25,6 +25,8 @@ import Quotation from './components/Quotation';
 import PInvoice from './components/PInvoice';
 import UpdateArtifact from './components/UpdateArtifact';
 import PQuotation from './components/PQuotation';
+import AllInvoice from './components/AllInvoice';
+import AllQuotation from './components/AllQuotation';
 
 
 function App() {
@@ -77,6 +79,8 @@ function App() {
           <Route path="/AdminLogin" element={<AdminLogin loginstatus={loginstatus} dbpath={dbpath} vsb={vsb} setBtnstatus={setBtnstatus} />} />
           <Route path="/Qr" element={<Qr dbpath={dbpath} vsb={vsb} qrid={qrid} />} />
           <Route path="/Qr/:qrid" element={<Qr dbpath={dbpath} vsb={vsb} />} />
+          <Route path="/AllInvoice" element={<AllInvoice cart={cart} dbpath={dbpath} vsb={vsb}/>}/>
+          <Route path="/AllQuotation" element={<AllQuotation cart={cart} dbpath={dbpath} vsb={vsb}/>}/>
         </Routes>
         <Footer dbpath={dbpath}/>
       </Router>

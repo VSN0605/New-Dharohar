@@ -200,7 +200,7 @@ useEffect(() => {
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>{item.qrid}</td>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>&#8377; {priceFormat(item.rate)}/-</td>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '10%'}}>{item.quantity}</td>
-                    <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>&#8377; {priceFormat(item.price)}/-</td>
+                    <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>&#8377; {priceFormat(item.price*item.quantity)}/-</td>
                   </tr>
                 )}
                 <tr>

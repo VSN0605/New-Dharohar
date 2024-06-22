@@ -84,7 +84,17 @@ export default function GenerateQuotation({cart,setCart,dbpath,vsb}) {
       calculateFprice(result.data.phpresult[0]['price'],damount,gst);
   }
 
-  const submit = () => {
+  const submit = async() => {
+
+    // try{
+    //   const result = await axios.get(dbpath+"getPQuotation.php?id="+quotationNo);
+    //   console.log("result For quotation", result.data?.phpresult);
+
+    //   if(result.data.phpresult.length){
+    //     alert('This Quotation Number Is Already Exists, Try Another One!');
+    //     return
+    //   }
+
     if (name.length === 0) {
       alert("Name has been left blank!");
     }  else if (cart.length === 0) {
@@ -178,6 +188,9 @@ export default function GenerateQuotation({cart,setCart,dbpath,vsb}) {
       }, 2000);
       handleClick();  
     }
+  // }catch(error){
+  //   console.log("Error While Fetching the Data --> ", error)
+  // }
   } 
 
   const calculateFprice = (cprice, cdamount, cgst) => {
@@ -320,13 +333,23 @@ export default function GenerateQuotation({cart,setCart,dbpath,vsb}) {
   };
 
   // handle delete function
-  const handleDelete = (iddd) => {
-   console.log("qrid",iddd)
-    const updatedCart = cart.filter(item => item.id !== iddd);
-    console.log("cartupdated", updatedCart)
+  // const handleDelete = (iddd) => {
+  //  console.log("qrid",iddd)
+  //   const updatedCart = cart.filter(item => item.id !== iddd);
+  //   console.log("cartupdated", updatedCart)
+  //   setCart(updatedCart);
+  //   calculateTotalAmount(updatedCart);
+  // };
+
+  const handleDelete = (event, index) => {
+    event.preventDefault();
+  
+    // Use the index to delete the specific item
+    const updatedCart = cart.filter((item, i) => i !== index);
     setCart(updatedCart);
     calculateTotalAmount(updatedCart);
-  };
+  };  
+  
 console.log("cart",cart)
 //   console.log("component render")
   return (
@@ -415,7 +438,7 @@ console.log("cart",cart)
                 <td><span id={'rate'+index}>{priceFormat(item.price * item.quantity)}</span></td>
                 <td><button
                       style={{ backgroundColor: 'red', borderRadius: '10px', border: '0px solid', width: '80px', color: 'white', fontWeight: 'bold', height: '35px' }}
-                      onClick={() => handleDelete(item.id)} >
+                      onClick={(event) => handleDelete(event, index)} >
                       DELETE
                     </button>
                   </td>

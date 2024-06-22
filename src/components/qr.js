@@ -18,46 +18,98 @@ console.log("gcvashgd",qrid);
   const [name, setName] = useState();
   const [price, setPrice] = useState();
 
+  // const loadArtifacts = async () => {
+  //   try {
+  //     // Fetch data from the server
+  //     const CheckResult = await axios.get(`${dbpath}displayall.php`);
+  //     console.log("CHeck: ", CheckResult.data.phpresult);
+    
+  //     // Ensure the data is in the expected format
+  //     if (!Array.isArray(CheckResult.data.phpresult)) {
+  //       throw new Error("Unexpected data format");
+  //     }
+    
+  //     // Extract and search the data
+  //     const findData = CheckResult.data.phpresult;
+  //     console.log("FINDED DATA 1: ", findData2);
+  //     const findData2 = findData?.find((item) => item.qrid === qrid);
+  //     console.log("FINDED DATA: ", findData2);
+    
+  //     // Check if data was found
+  //     if (findData2) {
+  //       alert("Data Available");
+  //     } else {
+  //       console.log("No matching data found");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching or processing data:", error);
+  //   }    
+
+  //   console.log("dwjodiw ---- -"+qrid)
+  //   const result   = await axios.get(dbpath + "display.php?id="+qrid);
+    
+  //   setArtifact(result?.data.phpresult);
+  //   console.log("RESULT: ",result.data.phpresult); 
+  //   let str = "https://test2.royalswebtech.com/Display/"+qrid;
+  //   // let str = "http://localhost/Display/"+qrid;
+  //   console.log("ste", str);
+  //   setValue(str);
+  //    setName(result?.data.phpresult[0]['name']);
+  //   setPrice(result?.data.phpresult[0]['price']);  
+  //   document.getElementById("priceid").innerHTML = priceFormat(result?.data.phpresult[0]['price']);
+  // }
+
   const loadArtifacts = async () => {
     try {
-      // Fetch data from the server
-      const CheckResult = await axios.get(`${dbpath}displayall.php`);
-      console.log("CHeck: ", CheckResult.data.phpresult);
+        // Fetch data from the server
+        const CheckResult = await axios.get(`${dbpath}displayall.php`);
+        console.log("Check: ", CheckResult.data.phpresult);
     
-      // Ensure the data is in the expected format
-      if (!Array.isArray(CheckResult.data.phpresult)) {
-        throw new Error("Unexpected data format");
-      }
+        // Ensure the data is in the expected format
+        if (!Array.isArray(CheckResult.data.phpresult)) {
+            throw new Error("Unexpected data format");
+        }
     
-      // Extract and search the data
-      const findData = CheckResult.data.phpresult;
-      console.log("FINDED DATA 1: ", findData2);
-      const findData2 = findData?.find((item) => item.qrid === qrid);
-      console.log("FINDED DATA: ", findData2);
+        // Extract and search the data
+        const findData = CheckResult.data.phpresult;
+        const findData2 = findData?.find((item) => item.qrid === qrid);
+        console.log("FIND DATA: ", findData2);
     
-      // Check if data was found
-      if (findData2) {
-        alert("Data Available");
-      } else {
-        console.log("No matching data found");
-      }
+        // Check if data was found
+        if (findData2) {
+            alert("Data Available");
+        } else {
+            alert("No matching data found");
+            console.log("No matching data found");
+            setArtifact(null);
+            setValue("");
+            setName("");
+            setPrice(0);
+            document.getElementById("priceid").innerHTML = priceFormat(0);
+            return; // Exit the function early since no data was found
+        }
     } catch (error) {
-      console.error("Error fetching or processing data:", error);
-    }    
+        console.error("Error fetching or processing data:", error);
+        return; // Exit the function early if there was an error
+    }
 
-    console.log("dwjodiw ---- -"+qrid)
-    const result   = await axios.get(dbpath + "display.php?id="+qrid);
-    
-    setArtifact(result?.data.phpresult);
-    console.log("RESULT: ",result.data.phpresult); 
-    let str = "https://test2.royalswebtech.com/Display/"+qrid;
-    // let str = "http://localhost/Display/"+qrid;
-    console.log("ste", str);
-    setValue(str);
-     setName(result?.data.phpresult[0]['name']);
-    setPrice(result?.data.phpresult[0]['price']);  
-    document.getElementById("priceid").innerHTML = priceFormat(result?.data.phpresult[0]['price']);
-  }
+    console.log("dwjodiw ---- -" + qrid);
+
+    try {
+        const result = await axios.get(dbpath + "display.php?id=" + qrid);
+        setArtifact(result?.data.phpresult);
+        console.log("RESULT: ", result.data.phpresult);
+        let str = "https://test2.royalswebtech.com/Display/" + qrid;
+        console.log("str", str);
+        setValue(str);
+        setName(result?.data.phpresult[0]['name']);
+        setPrice(result?.data.phpresult[0]['price']);
+        document.getElementById("priceid").innerHTML = priceFormat(result?.data.phpresult[0]['price']);
+    } catch (error) {
+        console.error("Error fetching artifact details:", error);
+        // Handle additional error cases if necessary
+    }
+}
 
   const navigate = useNavigate();
   const isUserLoggedIn = Cookies.get('userLoggedIn');
@@ -73,7 +125,7 @@ console.log("gcvashgd",qrid);
           }
       }, [2000]);    
 
-  {artifact.map((res)=>
+  {artifact?.map((res)=>
     <tr>    
        
     </tr>
