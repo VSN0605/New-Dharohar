@@ -21,21 +21,21 @@ const AllQuotation = ({ dbpath }) => {
 
   const deleteQuotation = async(id)=> {
 
-
-    console.log(id);
-
-    const url = dbpath + "deleteFetchQuotation.php"
-    let fData = new FormData();
-    fData.append("id", id);
-    axios
-      .post(url, fData)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    
+    console.log("Id to be Deleted:",id);
+    if (window.confirm("Do you want to delete the data?")) {
+      const url = dbpath + "deleteFetchQuotation.php"
+      let fData = new FormData();
+      fData.append("id", id);
+      axios
+        .post(url, fData)
+        .then((response) => {
+          console.log(response.data);
+          loadData();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }
 
 

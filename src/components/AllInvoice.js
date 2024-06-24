@@ -21,6 +21,25 @@ const AllInvoice = ({dbpath}) => {
         loadData();
     },[])
 
+    const deleteInvoice = async(id)=> {
+
+      console.log("Id to be Deleted:",id);
+      if (window.confirm("Do you want to delete the data?")) {
+        const url = dbpath + "deleteFetchInvoice.php"
+        let fData = new FormData();
+        fData.append("id", id);
+        axios
+          .post(url, fData)
+          .then((response) => {
+            console.log(response.data);
+            loadData();
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    }
+
 
   
 
@@ -103,7 +122,7 @@ const AllInvoice = ({dbpath}) => {
                         <td>  <button
                             type="button"
                             className="btn btn-danger"
-                            // onClick={() => handleDelete(res.id)}
+                            onClick={() => deleteInvoice(res.id)}
                           >
                             DELETE
                           </button></td>

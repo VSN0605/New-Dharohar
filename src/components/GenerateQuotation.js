@@ -125,7 +125,7 @@ export default function GenerateQuotation({cart,setCart,dbpath,vsb}) {
       fData.append('fprice', fprice);
       fData.append('discount', damount);
       fData.append('image', image);
-      console.log(fData);
+      console.log('nikhil ',fData);
 
       let tempq, flag =0;
       console.log(cart);
