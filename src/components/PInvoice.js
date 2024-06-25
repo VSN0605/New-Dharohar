@@ -68,9 +68,11 @@ export default function PInvoice({dbpath,vsb}) {
     } 
     document.getElementById("fprice").innerHTML = priceFormat(result.data.phpresult[0]['fprice']); 
     document.getElementById("timestamp").innerHTML = result.data.phpresult[0]['timestamp']; 
-    } catch(error){
-      console.log("Eroor Occured While Fetching the data ", error)
-      document.getElementById("Error-msg").innerHTML = "Error Fetching Data, Check the Invoice Number !!";
+    document.getElementById("Error-msg").innerHTML = "";
+
+  } catch(error){
+    console.log("Eroor Occured While Fetching the data ", error)
+    document.getElementById("Error-msg").innerHTML = "Error Fetching Data, Check the Invoice Number !!";
     }
 }
 
@@ -122,7 +124,7 @@ function printDiv() {
             <label className="form-label" style={{color:'RGB(104 81 155)'}}>Invoice No.<span style={{color:'red'}}>*</span></label>
             <input type="text" className="form-control" id="name" onChange={(e) => setInvoiceNo(e.target.value)} />
 
-            <p id='Error-msg' style={{color:'red', textAlign:'center'}}></p>
+            <p id='Error-msg' style={{color:'red', fontWeight: "500", textAlign:'center'}}></p>
           </div>
          
           <br />

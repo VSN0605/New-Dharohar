@@ -431,6 +431,7 @@ const priceFormat = (price) => {
               
         }
     }
+
       
     //invoice
     
@@ -446,6 +447,31 @@ const priceFormat = (price) => {
   } 
 console.log("ib=nvo", invoiceData)
   console.log("mukesh", cart)
+
+  
+
+
+useEffect(()=>{
+  function getCurrentYearMonth() {
+    const date = new Date();
+    let year = date.getFullYear().toString().slice(-2); // Get last two digits of the year
+    let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Get month and pad with zero if needed
+    let day = (date.getDate()).toString().padStart(2, '0');
+    // return year + month + day;
+    return day + month + year;
+  }
+
+console.log(getCurrentYearMonth());
+
+function generateRandomCode() {
+  return Math.floor(1000 + Math.random() * 9000);
+}
+
+const InvoiceNumber = `DHI-${getCurrentYearMonth()}-${generateRandomCode()}`;
+console.log("INVOICVCE NUMBER: ", InvoiceNumber);
+  setInvoiceNo(InvoiceNumber);
+},[])
+
   return (
     <>
    
@@ -458,7 +484,7 @@ console.log("ib=nvo", invoiceData)
         <form >
         <div className="mb-3">
             <label className="form-label" style={{color:'RGB(104 81 155)'}}> Invoice No.<span style={{color:'red'}}>*</span></label>
-            <input type="text" className="form-control" id="invoiceNo" onChange={(e) => setInvoiceNo(e.target.value)} />
+            <input type="text" className="form-control" id="invoiceNo" value={invoiceNo} disabled />
           </div>
 
           <div className="mb-3">

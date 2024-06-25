@@ -66,6 +66,8 @@ export default function PQuotation({dbpath,vsb}) {
     // document.getElementById("rate").innerHTML = priceFormat(result.data.phpresult[0]['rate']);
     document.getElementById("timestamp").innerHTML = result.data.phpresult[0]['timestamp']; 
 
+    document.getElementById("Error-msg").innerHTML = "";
+
     } catch(error){
       console.log("Eroor Occured While Fetching the data ", error)
       document.getElementById("Error-msg").innerHTML = "Error Fetching Data, Check the Quotation Number !!";
@@ -122,7 +124,7 @@ function printDiv() {
             <label className="form-label" style={{color:'RGB(104 81 155)'}}>Quotation No.<span style={{color:'red'}}>*</span></label>
             <input type="text" className="form-control" id="name" onChange={(e) => setQuotationNo(e.target.value)} />
 
-            <p id='Error-msg' style={{color:'red', textAlign:'center'}}></p>
+            <p id='Error-msg' style={{color:'red', fontWeight: "500", textAlign:'center'}}></p>
           </div>
          
           <br />

@@ -350,6 +350,26 @@ export default function GenerateQuotation({cart,setCart,dbpath,vsb}) {
     setCart(updatedCart);
     calculateTotalAmount(updatedCart);
   };  
+
+  useEffect(()=>{
+    function getCurrentYearMonth() {
+      const date = new Date();
+      let year = date.getFullYear().toString().slice(-2); // Get last two digits of the year
+      let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Get month and pad with zero if needed
+      let day = (date.getDate()).toString().padStart(2, '0');
+      return day + month + year;
+    }
+  
+  console.log(getCurrentYearMonth());
+  
+  function generateRandomCode() {
+    return Math.floor(1000 + Math.random() * 9000);
+  }
+  
+  const QuotationNumber = `DHQ-${getCurrentYearMonth()}-${generateRandomCode()}`;
+  console.log("Quotation: ", QuotationNumber);
+    setQuotationNo(QuotationNumber);
+  },[])
   
 console.log("cart",cart)
 //   console.log("component render")
@@ -364,7 +384,7 @@ console.log("cart",cart)
         <form >
         <div className="mb-3">
             <label className="form-label" style={{color:'RGB(104 81 155)'}}> Quotation Number<span style={{color:'red'}}>*</span></label>
-            <input type="text" className="form-control" id="quotationNo" onChange={(e) => setQuotationNo(e.target.value)} />
+            <input type="text" className="form-control" id="quotationNo" value={quotationNo} disabled/>
           </div>
 
           <div className="mb-3">
