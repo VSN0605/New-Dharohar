@@ -454,6 +454,7 @@ console.log("ib=nvo", invoiceData)
     {/*   <input type='button' value="view Cart" onClick={updateItemDB}></input> */}
       <div className="container shadow-lg" style={{border:'1px solid rgb(67,35,130)', padding:'50px', backgroundColor:'white'}}> 
         <center><h3 className="sp1" style={{fontWeight:'700', color:'rgb(67,35,130)'}}>Generate Invoice - <span id="ino">Loading..</span></h3></center>
+        
         <form >
         <div className="mb-3">
             <label className="form-label" style={{color:'RGB(104 81 155)'}}> Invoice No.<span style={{color:'red'}}>*</span></label>

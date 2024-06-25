@@ -63,6 +63,7 @@ export default function GenerateQuotation({cart,setCart,dbpath,vsb}) {
       else
       {
          result = await axios.get(dbpath+"invoicefetch.php?qrid="+qrid);
+         console.log("QuotationData: ", result.data.phpresult)
       } 
       if (!result.data.phpresult || result.data.phpresult.length === 0) {
       
@@ -80,7 +81,7 @@ export default function GenerateQuotation({cart,setCart,dbpath,vsb}) {
       setHsncode(result.data.phpresult[0]['hsncode']);
       setImage(result.data.phpresult[0]['image']);
       setAQuantity(result.data.phpresult[0]['quantity'])
-      addCart(result.data.phpresult[0]['hsncode'],result.data.phpresult[0]['name'],result.data.phpresult[0]['price'],result.data.phpresult[0]['quantity'],result.data.phpresult[0]['price']);
+      addCart(result.data.phpresult[0]['qrid'],result.data.phpresult[0]['hsncode'],result.data.phpresult[0]['name'],result.data.phpresult[0]['price'],result.data.phpresult[0]['quantity'],result.data.phpresult[0]['price']);
       calculateFprice(result.data.phpresult[0]['price'],damount,gst);
   }
 
@@ -125,7 +126,7 @@ export default function GenerateQuotation({cart,setCart,dbpath,vsb}) {
       fData.append('fprice', fprice);
       fData.append('discount', damount);
       fData.append('image', image);
-      console.log('nikhil ',fData);
+      console.log(fData);
 
       let tempq, flag =0;
       console.log(cart);
@@ -317,17 +318,17 @@ export default function GenerateQuotation({cart,setCart,dbpath,vsb}) {
   } */
   
 
-  const addCart = (hsncodef,pnamef,ratef,pricef) => { 
+  const addCart = (pqrid, hsncodef,pnamef,ratef,pricef) => { 
     setCart([
       ...cart,
       {
+        cqrid: pqrid,
         qrid: hsncodef,
         id: qrid,
         pname: pnamef,
         rate: ratef,
         quantity: '1',
         price: ratef
-
       }
     ]);
   };
@@ -424,7 +425,7 @@ console.log("cart",cart)
               </tr>
             </thead>
             <tbody>
-            {cart.map((item, index) =>
+            {cart?.map((item, index) =>
               <tr key={index}>
                 <td>{index+1}</td>
                 <td>{item.pname}</td>

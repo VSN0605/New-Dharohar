@@ -258,7 +258,7 @@ export default function Dashboard({
                   onClick={GetAllQuotation}
                   style={{ backgroundColor: "rgb(67,35,130)", height: "37px", marginTop: "9px" }}
                 >
-                  All Quotation
+                  All Quotations
               </button>
               <Link
                 className="nav-link"
@@ -306,7 +306,7 @@ export default function Dashboard({
                   onClick={GetAllInvoice}
                   style={{ backgroundColor: "rgb(67,35,130)", height: "37px", marginTop: "7px" }}
                 >
-                  All Invoice
+                  All Invoices
               </button>
             </div>
           </form>

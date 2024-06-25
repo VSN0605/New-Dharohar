@@ -29,7 +29,8 @@ export default function Invoice({cart,dbpath,vsb}) {
     document.getElementById("name").innerHTML = result.data.phpresult[0]['name'];
     document.getElementById("cno").innerHTML = result.data.phpresult[0]['contact']; 
     document.getElementById("email").innerHTML = result.data.phpresult[0]['email']; 
-    
+    // document.getElementById("qrid").innerHTML = result.data.phpresult[0]['pqrid'];
+
     if(result.data.phpresult[0]['id']<10)
     {
      document.getElementById("iid").innerHTML = "0"+result.data.phpresult[0]['quotation_no']; 
@@ -44,6 +45,7 @@ export default function Invoice({cart,dbpath,vsb}) {
     document.getElementById("pprice").innerHTML = priceFormat(result.data.phpresult[0]['price']); 
     document.getElementById("gst").innerHTML = result.data.phpresult[0]['gst']; 
      document.getElementById("discount").innerHTML = result.data.phpresult[0]['discount']; 
+     
    /* if(result.data.phpresult[0]['discount']==='0')
     {
         console.log('worked');
@@ -101,7 +103,7 @@ function printDiv() {
         <br></br>  
         <div >
           <div >
-         
+          
             <div style={{marginLeft: '10%'}}>
               <b>Quotation </b>:<span id="iid">NA</span><br></br>
               <b>Date &  Time </b>: <span id="timestamp">NA</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -135,6 +137,7 @@ function printDiv() {
                 <tr>
                   <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '10%'}}>Sr.No.</th>
                   <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>Description</th>
+                  <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>QRID</th>
                   <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>HSN CODE</th>
                   <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>Rate</th>
                   <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '10%'}}>Quantity</th>
@@ -147,6 +150,7 @@ function printDiv() {
                   <tr key={index}>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '10%'}}>{index+1}</td>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>{item.pname}</td>
+                    <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>{item.id}</td>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>{item.qrid}</td>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>&#8377; {priceFormat(item.rate)}</td>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '10%'}}>{item.quantity}</td>

@@ -58,7 +58,7 @@ const AllQuotation = ({ dbpath }) => {
       </style>
 
       <div style={{marginTop: "10%", display: "flex", justifyContent: "center"}}>
-        <h2>All Generated Quotation</h2>
+        <h2 style={{fontWeight: "bold", marginBottom: "2%"}}>All Generated Quotations</h2>
       </div>
 
       <div className="scrollable-table" style={{display: "flex", justifyContent: "flex-start"}}>

@@ -14,6 +14,7 @@ export default function Invoice({dbpath,vsb}) {
    const mapData = JSON.parse(localStorage.getItem("invoiceData"))
    const {product, qrid, total, gst, gstNo, Cname, address, contactNo, discount, fprice, invoiceId, invoiceNo } = mapData
   
+   console.log("Inoice Data: ", product)
   const [cart, setCart] = useState([]);
   const [pqrid, setPqrid] = useState('');
   const [invoiceData, setInvoiceData] = useState(null);
@@ -184,6 +185,7 @@ useEffect(() => {
               <thead>
                 <tr>
                   <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '10%'}}>Sr.No.</th>
+                  <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '10%'}}>QRID</th>
                   <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>Description</th>
                   <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>HSN CODE</th>
                   <th scope="col" style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>Rate</th>
@@ -193,9 +195,10 @@ useEffect(() => {
                 </tr>
               </thead>
               <tbody>
-                {product.map((item, index) =>
+                {product?.map((item, index) =>
                   <tr key={index}>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '10%'}}>{index+1}</td>
+                    <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '10%'}}>{item.cqrid}</td>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>{item.pname}</td>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>{item.qrid}</td>
                     <td style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '20%'}}>&#8377; {priceFormat(item.rate)}/-</td>
