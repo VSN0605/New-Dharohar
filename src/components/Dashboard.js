@@ -66,25 +66,45 @@ export default function Dashboard({
     return res;
   };
 
+  // const handleDelete = (artifactId) => {
+  //   console.log(`Delete artifact with ID ${artifactId}`);
+  //   if (window.confirm("Do you want to delete the data?")) {
+  //     const url = `${dbpath}deleteartifact.php`;
+  //     axios
+  //       .post(url, JSON.stringify({ id: artifactId }), {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       })
+  //       .then((response) => {
+  //         console.log(response.data);
+  //         loadArtifacts();
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //       });
+  //   }
+  // };
+
   const handleDelete = (artifactId) => {
     console.log(`Delete artifact with ID ${artifactId}`);
     if (window.confirm("Do you want to delete the data?")) {
-      const url = `${dbpath}deleteartifact.php`;
-      axios
-        .post(url, JSON.stringify({ id: artifactId }), {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-          loadArtifacts();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        const url = `${dbpath}deleteartifact.php`;
+        axios
+            .post(url, JSON.stringify({ id: artifactId }), {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                loadArtifacts();
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
-  };
+};
 
   // Placeholder for handleUpdate function
   const handleUpdate = (description, price) => {
@@ -118,7 +138,7 @@ export default function Dashboard({
         let fData = new FormData();
         fData.append("qrid", qrid);
         axios
-          .post(url, fData)
+          .post(url, fData)   
           .then((response) => {
             console.log(response.data);
             loadArtifacts();
@@ -156,7 +176,7 @@ export default function Dashboard({
         <br></br>
         <center>
           {" "}
-          <p style={{fontWeight: 'bold', fontSize: '25px'}}>Admin Panel</p><br></br>
+          <p style={{fontWeight: 'bold', fontSize: '25px'}}>ADMIN PANEL</p><br></br>
           <br></br>
           <Link style={{ width: "8%" }} to="/Add">
             <button

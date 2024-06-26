@@ -19,24 +19,41 @@ const AllQuotation = ({ dbpath }) => {
     loadData();
   }, []);
 
-  const deleteQuotation = async(id)=> {
+  // const deleteQuotation = async(id)=> {
 
-    console.log("Id to be Deleted:",id);
+  //   console.log("Id to be Deleted:",id);
+  //   if (window.confirm("Do you want to delete the data?")) {
+  //     const url = dbpath + "deleteFetchQuotation.php"
+  //     let fData = new FormData();
+  //     fData.append("id", id);
+  //     axios
+  //       .post(url, fData)
+  //       .then((response) => {
+  //         console.log(response.data);
+  //         loadData();
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //       });
+  //   }
+  // }
+
+  const deleteQuotation = async (id) => {
+    console.log("Id to be Deleted:", id);
     if (window.confirm("Do you want to delete the data?")) {
-      const url = dbpath + "deleteFetchQuotation.php"
-      let fData = new FormData();
-      fData.append("id", id);
-      axios
-        .post(url, fData)
-        .then((response) => {
-          console.log(response.data);
-          loadData();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        const url = dbpath + "deleteFetchQuotation.php";
+        const fData = { id: id };
+        axios
+            .post(url, fData)
+            .then((response) => {
+                console.log(response.data);
+                loadData();
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
-  }
+};
 
 
 

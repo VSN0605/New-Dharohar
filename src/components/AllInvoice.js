@@ -21,24 +21,42 @@ const AllInvoice = ({dbpath}) => {
         loadData();
     },[])
 
-    const deleteInvoice = async(id)=> {
+    // const deleteInvoice = async(id)=> {
 
-      console.log("Id to be Deleted:",id);
+    //   console.log("Id to be Deleted:",id);
+    //   if (window.confirm("Do you want to delete the data?")) {
+    //     const url = dbpath + "deleteFetchInvoice.php"
+    //     let fData = new FormData();
+    //     fData.append("id", id);
+    //     axios
+    //       .post(url, fData)
+    //       .then((response) => {
+    //         console.log(response.data);
+    //         loadData();
+    //       })
+    //       .catch((error) => {
+    //         console.error(error);
+    //       });
+    //   }
+    // }
+
+    const deleteInvoice = async (id) => {
+      console.log("Id to be Deleted:", id);
       if (window.confirm("Do you want to delete the data?")) {
-        const url = dbpath + "deleteFetchInvoice.php"
-        let fData = new FormData();
-        fData.append("id", id);
-        axios
-          .post(url, fData)
-          .then((response) => {
-            console.log(response.data);
-            loadData();
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+          const url = dbpath + "deleteFetchInvoice.php";
+          const fData = { id: id };
+          axios
+              .post(url, fData)
+              .then((response) => {
+                  console.log(response.data);
+                  loadData();
+              })
+              .catch((error) => {
+                  console.error(error);
+              });
       }
-    }
+  };
+  
 
 
   
