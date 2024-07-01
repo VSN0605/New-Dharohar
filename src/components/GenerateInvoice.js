@@ -333,8 +333,12 @@ const priceFormat = (price) => {
   const handleQrid=(e)=>{
     e.preventDefault();
     console.log("QR id Value :-> ", e.target.value);
+    // if(e.target.value>10){
+    //   let newdata = e.target.value.slice(0,40)
+    //   console.log(newdata);
+    //   setQrid(newdata);
+    // }
     setQrid(e.target.value);
-
     localStorage.setItem("InvoiceQrid", e.target.value);
   }
 
@@ -377,7 +381,7 @@ const priceFormat = (price) => {
       fData.append('address', address);
       fData.append('pid', pid)
       fData.append('price', tamount);
-     
+    
       fData.append('gst', gst);
       fData.append('fprice', fprice);
       fData.append('discount', damount);
