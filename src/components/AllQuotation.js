@@ -83,28 +83,28 @@ const AllQuotation = ({ dbpath }) => {
           <h2>All Generated Quotations</h2>
         </div>
         <div className="input-group mb-3" style={{ display: 'flex', gap: '10px', justifyContent: 'center', alignItems: 'center', margin: '20px 0' }}>
-          <div>
-            <select
-              className="form-select"
-              id="inputGroupSelect01"
-              value={filterValue}
-              onChange={(e) => setFilterValue(e.target.value)}
-              style={{ padding: '6px 6px', borderRadius: '1px' }}
-            >
-              <option value="">Filter By...</option>
-              <option value="name">Name</option>
-              <option value="quotation_no">Quotation Number</option>
-              <option value="timestamp">Date</option>
-            </select>
-          </div>
+            <div>
+                <select
+                    className="form-select"
+                    id="inputGroupSelect01"
+                    value={filterValue}
+                    onChange={(e) => setFilterValue(e.target.value)}
+                    style={{ padding: '6px 6px', borderRadius: '1px' }}
+                >
+                    <option value="">Filter By...</option>
+                    <option value="name">Name</option>
+                    <option value="invoice_no">Invoice Number</option>
+                    <option value="timestamp">Date</option>
+                </select>
+            </div>
 
-          <div>
-            <input
-              type={filterValue === 'name' ? "text" : "text"}
-              style={{ color: 'gray', fontWeight: '500', padding: '4px 6px' }}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-          </div>
+            <div>
+                <input
+                    type={filterValue === 'timestamp' ? 'date' : 'text'}
+                    style={{ color: 'gray', fontWeight: '500', padding: '4px 6px' }}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+            </div>
         </div>
       </div>
 

@@ -224,15 +224,15 @@ useEffect(() => {
                 <td className='l_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '70%'}}>Product Total</td>
                 <td className='r_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', paddingLeft: '20px'}}>&nbsp;&nbsp;&nbsp; &#8377;<span id="pprice">{priceFormat(total ? total : 'NA')}</span>/-</td>
               </tr>
-              
-              <tr>
-                <td className='l_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '70%'}}>GST</td>
-                <td className='r_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', paddingLeft: '20px'}}>&nbsp;&nbsp;&nbsp;<span id="gst">{gst ? gst : 'NA'}</span> %</td>
-              </tr>
 
               <tr id='discdiv'>
                 <td className='l_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '70%'}}>Discount</td>
                 <td className='r_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', paddingLeft: '20px'}}>- <span id="discount"> {discount ? discount : 'NA'}</span>  %</td>
+              </tr>
+              
+              <tr>
+                <td className='l_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '70%'}}>GST</td>
+                <td className='r_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', paddingLeft: '20px'}}>&nbsp;&nbsp;&nbsp;<span id="gst">{gst ? gst : 'NA'}</span> %</td>
               </tr>
               
               <tr>

@@ -16,16 +16,40 @@ export default function Dashboard({
   setBtnstatus,
 }) {
   const [artifact, setArtifact] = useState([]);
+  const [artifact2, setArtifact2] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0); //newly set
   const [totalQuantity, setTotalQuantity] = useState(0); //newly set
   const navigate = useNavigate();
+  const [filterValue, setFilterValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
 
   const loadArtifacts = async () => {
     const result = await axios.get(dbpath + "displayall.php");
   
-    setArtifact(result.data.phpresult);
+    setArtifact2(result.data.phpresult);
     console.log("dashboard data",result.data.phpresult);
   };
+  
+
+  useEffect(() => {
+    let filteredData = artifact2;
+
+    if (inputValue !== '') {
+        if (filterValue === 'id') {
+            filteredData = artifact.filter((item) =>
+                item.id.toLowerCase().includes(inputValue.toLowerCase())
+            );
+        } else if (filterValue === 'qrid') {
+            filteredData = artifact.filter((item) =>
+                item.qrid.includes(inputValue)
+            );
+        } else if (filterValue === '') {
+            filteredData = artifact2;
+        } 
+    }
+
+    setArtifact(filteredData);
+}, [filterValue, inputValue, artifact2, artifact]);
 
   // calculating total amount of quantity and price
   useEffect(() => {
@@ -338,6 +362,33 @@ export default function Dashboard({
           <br></br>
           <center>
             <h2 style={{fontWeight: "bold"}}> ALL ARTIFACTS </h2>
+
+            <br></br>
+
+                      <div style={{display: "flex", gap: "15px", justifyContent: "center"}}>
+                      <div>
+                        <select
+                            className="form-select"
+                            id="inputGroupSelect01"
+                            value={filterValue}
+                            onChange={(e) => setFilterValue(e.target.value)}
+                            style={{ padding: '6px 6px', borderRadius: '1px' }}
+                        >
+                            <option value="">Filter By...</option>
+                            <option value="id">ID</option>
+                            <option value="qrid">QRID</option>
+                            {/* <option value="timestamp">Date</option> */}
+                        </select>
+                      </div>
+
+                      <div>
+                        <input
+                            type={filterValue === 'name' ? "text" : "text"}
+                            style={{ color: 'gray', fontWeight: '500', padding: '4px 6px' }}
+                            onChange={(e) => setInputValue(e.target.value)}
+                        />
+                      </div>
+                      </div>
 
             <br></br>
             <div></div>
