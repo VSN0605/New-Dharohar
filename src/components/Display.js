@@ -49,7 +49,7 @@ export default function Display({dbpath,vsb}) {
                 
                 <div className='didiv'><div className='image'> 
                     
-                    <center><img className='i_img mt-2'  id="p_img" style={{ width: '200px', border:'rgb(67,35,130) solid 2px', borderRadius: '10px'}} src={"https://test2.royalswebtech.com/archaeoshop/uploads/"+res.image}></img> </center>
+                    <center><img className='i_img mt-2'  id="p_img" style={{ width: '200px', border:'rgb(67,35,130) solid 2px', borderRadius: '10px'}} src={"http://test2.royalswebtech.com/archaeoshop/uploads/"+res.image}></img> </center>
                     {/* <center><img className='i_img mt-2'  id="p_img" style={{ width: '200px', border:'rgb(67,35,130) solid 2px', borderRadius: '10px'}} src={"http://localhost/archaeoshop/uploads" + res.image}></img> </center> */}
 
                     </div>

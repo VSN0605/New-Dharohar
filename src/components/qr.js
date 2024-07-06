@@ -54,7 +54,7 @@ console.log("gcvashgd",qrid);
   //   // let str = "http://localhost/Display/"+qrid;
   //   console.log("ste", str);
   //   setValue(str);
-  //    setName(result?.data.phpresult[0]['name']);
+  //   setName(result?.data.phpresult[0]['name']);
   //   setPrice(result?.data.phpresult[0]['price']);  
   //   document.getElementById("priceid").innerHTML = priceFormat(result?.data.phpresult[0]['price']);
   // }
@@ -99,13 +99,15 @@ console.log("gcvashgd",qrid);
         const result = await axios.get(dbpath + "display.php?id=" + qrid);
         setArtifact(result?.data.phpresult);
         console.log("RESULT: ", result.data.phpresult);
-        let str = "https://test2.royalswebtech.com/Display/" + qrid;
+        // let str = "http://test.maabhawanilogistics.com/Display/" + qrid;
+        let str = "http://test2.royalswebtech.com/Display/" + qrid;
         console.log("str", str);
         setValue(str);
         setName(result?.data.phpresult[0]['name']);
         setPrice(result?.data.phpresult[0]['price']);
         document.getElementById("priceid").innerHTML = priceFormat(result?.data.phpresult[0]['price']);
     } catch (error) {
+      
         console.error("Error fetching artifact details:", error);
         // Handle additional error cases if necessary
     }

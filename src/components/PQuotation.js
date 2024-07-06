@@ -218,7 +218,7 @@ function printDiv() {
             <tbody>
               <tr>
                 <td className='l_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', width: '70%'}}>Product Total</td>
-                <td className='r_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', paddingLeft: '20px'}}>&nbsp;&nbsp;&nbsp;&#8377; <span id="pprice">NA</span></td>
+                <td className='r_col' style={{ border: '1px solid rgb(209, 209, 209)', height: '40px', paddingLeft: '20px', paddingLeft: '20px'}}>&nbsp;&nbsp;&nbsp;&#8377; <span id="pprice">NA</span>/-</td>
               </tr>
 
               <tr id='discdiv'>

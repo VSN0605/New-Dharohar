@@ -410,7 +410,13 @@ console.log("cart",cart)
           <div className="mb-3">
             <label className="form-label" style={{color:'RGB(104 81 155)'}}> Product QR ID<span style={{color:'red'}}>*</span></label>
             <div style={{display:'flex'}}>
-              <input type="text" className="form-control" id="qrid" style={{width:'280%'}} onChange={(e) => setQrid(e.target.value)} /> &nbsp;&nbsp;&nbsp;
+             
+             
+             
+              <input type="text" className="form-control" id="qrid" style={{width:'280%'}} onChange={(e) => setQrid(e.target.value)} />
+              
+              
+               &nbsp;&nbsp;&nbsp;
               <button id="btn" type='button' className="btn btn-primary1" style={{backgroundColor:'rgb(67,35,130)', height:"7%"}} onClick={() => {fetchData()}}>Fetch data</button>
             </div>
           </div>

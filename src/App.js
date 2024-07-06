@@ -27,14 +27,17 @@ import UpdateArtifact from './components/UpdateArtifact';
 import PQuotation from './components/PQuotation';
 import AllInvoice from './components/AllInvoice';
 import AllQuotation from './components/AllQuotation';
-
+import DeletedArtifacts from './components/DeletedArtifacts';
+import AllDeletedQuotation from './components/AllDeletedQuotation';
+import AllDeletedInvoice from './components/AllDeletedInvoice';
 
 function App() {
   const [cart, setCart] = useState([]);
   const [qrid, setQrid] = useState([]);
   const [btnStatus, setBtnstatus] = useState('Admin Login');
-  // const [dbpath, setdbpath] = useState('https://test2.royalswebtech.com/archaeoshop/');
-  const [dbpath, setdbpath] = useState('http://localhost/archaeoshop/');
+  const [dbpath, setdbpath] = useState('http://test2.royalswebtech.com/archaeoshop/');
+  // const [dbpath, setdbpath] = useState('http://test.maabhawanilogistics.com/archaeoshop/');
+  // const [dbpath, setdbpath] = useState('http://localhost/archaeoshop/');
   const [loginstatus, setloginstatus] = useState('0');
 
   const vsb = (hfVisiblity) => {
@@ -80,7 +83,10 @@ function App() {
           <Route path="/Qr" element={<Qr dbpath={dbpath} vsb={vsb} qrid={qrid} />} />
           <Route path="/Qr/:qrid" element={<Qr dbpath={dbpath} vsb={vsb} />} />
           <Route path="/AllInvoice" element={<AllInvoice cart={cart} dbpath={dbpath} vsb={vsb}/>}/>
+          <Route path="/AllDeletedInvoice" element={<AllDeletedInvoice cart={cart} dbpath={dbpath} vsb={vsb}/>}/>
           <Route path="/AllQuotation" element={<AllQuotation cart={cart} dbpath={dbpath} vsb={vsb}/>}/>
+          <Route path="/AllDeletedQuotation" element={<AllDeletedQuotation cart={cart} dbpath={dbpath} vsb={vsb}/>}/>
+          <Route path="/DeletedArtifacts" element={<DeletedArtifacts qrid={qrid}  dbpath={dbpath} cart={cart} vsb={vsb}  setQrid={setQrid} />} />
         </Routes>
         <Footer dbpath={dbpath}/>
       </Router>
@@ -89,5 +95,4 @@ function App() {
 }
 
 export default App;
-
 

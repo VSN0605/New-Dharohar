@@ -4,6 +4,7 @@ import QRCode from "react-qr-code";
 import { Link, useNavigate } from "react-router-dom";
 import "./css/Dashboard.css";
 import Cookies from "js-cookie";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 
 export default function Dashboard({
   qrid,
@@ -197,6 +198,17 @@ export default function Dashboard({
         <br></br>
         <br></br>
         <br></br>
+          <div style={{display: "flex", justifyContent: "right", padding: "0"}}>
+            <Link style={{ width: "8%" }} to="/DeletedArtifacts">
+              <button
+                type="button"
+                className="btn-primary btn"
+                style={{ backgroundColor: "rgb(67,35,130)",  background: "transparent", }}
+              >
+                <RiDeleteBin6Fill style={{width: "50px", fontSize: "40px",  color: "black"}} />
+              </button>
+            </Link>{" "}
+          </div>
         <br></br>
         <center>
           {" "}

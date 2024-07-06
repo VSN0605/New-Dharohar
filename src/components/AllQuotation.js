@@ -1,11 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+// import { RiDeleteBin6Fill } from "react-icons/ri";
+// import { useNavigate } from "react-router-dom";
 
 const AllQuotation = ({ dbpath }) => {
   const [QuotationResponse, setQuotationResponse] = useState([]);
   const [QuotationData, setQuotationData] = useState([]);
-
+  // const navigate = useNavigate();
   const [filterValue, setFilterValue] = useState('');
   const [inputValue, setInputValue] = useState('');
 
@@ -24,23 +27,23 @@ const AllQuotation = ({ dbpath }) => {
     loadData();
   }, []);
 
-  const deleteQuotation = async (id) => {
+  const handleDelete = async (id) => {
     console.log("Id to be Deleted:", id);
     if (window.confirm("Do you want to delete the data?")) {
-      const url = dbpath + "deleteFetchQuotation.php";
-      let fData = new FormData();
-      fData.append("id", id);
-      axios
-        .post(url, fData)
-        .then((response) => {
-          console.log(response.data);
-          loadData();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        const url = dbpath + "deleteFetchQuotation.php";
+        let fData = new FormData();
+        fData.append("id", id);
+        axios
+            .post(url, fData)
+            .then((response) => {
+                console.log(response.data);
+                loadData();
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
-  };
+};
 
   useEffect(() => {
     let filteredData = QuotationData;
@@ -76,11 +79,25 @@ const AllQuotation = ({ dbpath }) => {
         `}
       </style>
 
+        
+
       <div
-        style={{ marginTop: "10%", display: "flex", justifyContent: "center", alignItems: 'center', flexDirection: 'column' }}
+        style={{ marginTop: "10%", display: "flex", justifyContent: "center",  flexDirection: 'column' }}
       >
+        {/* <div onClick={() => navigate("/DeletedQuotation", {state: {dbpath}})}>
+          <RiDeleteBin6Fill style={{width: "50px", fontSize: "40px", marginLeft: "50px", color: "black"}} />
+        </div> */}
+          <Link style={{ width: "8%" }} to="/AllDeletedQuotation">
+            <button
+              type="button"
+              className="btn-primary btn"
+              style={{ backgroundColor: "rgb(67,35,130)", marginLeft: "30px" }}
+            >
+              RECYCLE BIN
+            </button>
+          </Link>{" "}
         <div>
-          <h2>All Generated Quotations</h2>
+          <h2 style={{textAlign: "center"}}>All Generated Quotations</h2>
         </div>
         <div className="input-group mb-3" style={{ display: 'flex', gap: '10px', justifyContent: 'center', alignItems: 'center', margin: '20px 0' }}>
             <div>
@@ -93,7 +110,7 @@ const AllQuotation = ({ dbpath }) => {
                 >
                     <option value="">Filter By...</option>
                     <option value="name">Name</option>
-                    <option value="invoice_no">Invoice Number</option>
+                    <option value="quotation_no">Quotation Number</option>
                     <option value="timestamp">Date</option>
                 </select>
             </div>
@@ -164,7 +181,7 @@ const AllQuotation = ({ dbpath }) => {
                   <button
                     type="button"
                     className="btn btn-danger"
-                    onClick={() => deleteQuotation(res.id)}
+                    onClick={() => handleDelete(res.id)}
                   >
                     DELETE
                   </button>

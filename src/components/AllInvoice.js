@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 const AllInvoice = ({ dbpath }) => {
     const [InvoiceResponse, setInvoiceResponse] = useState([]);
@@ -75,7 +76,20 @@ const AllInvoice = ({ dbpath }) => {
                 `}
             </style>
 
-            <div style={{ marginTop: "10%", display: "flex", justifyContent: "center", alignItems: 'center', flexDirection: 'column' }}>
+                <div style={{marginTop: "120px"}}>
+                    <Link style={{ width: "8%" }} to="/AllDeletedInvoice">
+                        <button
+                        type="button"
+                        className="btn-primary btn"
+                        style={{ backgroundColor: "rgb(67,35,130)", marginLeft: "30px" }}
+                        >
+                            RECYCLE BIN
+                        </button>
+                    </Link>{" "}
+                </div>
+
+            <div style={{ marginTop: "5%", display: "flex", justifyContent: "center", alignItems: 'center', flexDirection: 'column' }}>
+                
                 <div>
                     <h2>All Generated Invoices</h2>
                 </div>
