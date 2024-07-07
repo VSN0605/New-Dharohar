@@ -35,7 +35,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [qrid, setQrid] = useState([]);
   const [btnStatus, setBtnstatus] = useState('Admin Login');
-  const [dbpath, setdbpath] = useState('http://test2.royalswebtech.com/archaeoshop/');
+  const [dbpath, setdbpath] = useState('https://shop.dharoharvintagestore.com/archaeoshop/');
   // const [dbpath, setdbpath] = useState('http://test.maabhawanilogistics.com/archaeoshop/');
   // const [dbpath, setdbpath] = useState('http://localhost/archaeoshop/');
   const [loginstatus, setloginstatus] = useState('0');
@@ -82,6 +82,7 @@ function App() {
           <Route path="/AdminLogin" element={<AdminLogin loginstatus={loginstatus} dbpath={dbpath} vsb={vsb} setBtnstatus={setBtnstatus} />} />
           <Route path="/Qr" element={<Qr dbpath={dbpath} vsb={vsb} qrid={qrid} />} />
           <Route path="/Qr/:qrid" element={<Qr dbpath={dbpath} vsb={vsb} />} />
+          <Route path="/Qr/:name" element={<Qr dbpath={dbpath} vsb={vsb} />} />
           <Route path="/AllInvoice" element={<AllInvoice cart={cart} dbpath={dbpath} vsb={vsb}/>}/>
           <Route path="/AllDeletedInvoice" element={<AllDeletedInvoice cart={cart} dbpath={dbpath} vsb={vsb}/>}/>
           <Route path="/AllQuotation" element={<AllQuotation cart={cart} dbpath={dbpath} vsb={vsb}/>}/>

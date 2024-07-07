@@ -99,8 +99,9 @@ console.log("gcvashgd",qrid);
         const result = await axios.get(dbpath + "display.php?id=" + qrid);
         setArtifact(result?.data.phpresult);
         console.log("RESULT: ", result.data.phpresult);
-        // let str = "http://test.maabhawanilogistics.com/Display/" + qrid;
-        let str = "http://test2.royalswebtech.com/Display/" + qrid;
+        let str = "https://shop.dharoharvintagestore.com/Display/" + qrid;
+        // https://shop.dharoharvintagestore.com/
+        // let str = "http://test2.royalswebtech.com/Display/" + qrid;
         console.log("str", str);
         setValue(str);
         setName(result?.data.phpresult[0]['name']);
@@ -177,6 +178,7 @@ console.log("gcvashgd",qrid);
               </div>
               <div class="card-body">
                 <p style={{fontSize:'40px', fontWeight:'bold'}}  class="card-title">QR ID : {qrid}</p>
+                <p style={{fontSize:'20px', fontWeight:'bold'}} className='card-title'>Product Name : {name}</p>
                 <p style={{fontSize:'30px', fontWeight:'bold'}} className='card-title'>Price : ₹ {/* {priceFormat(price)} */}<span id="priceid"> Loading..</span>/-</p>
               </div>
               </center>
